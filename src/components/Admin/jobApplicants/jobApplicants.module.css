@@ -1,0 +1,33 @@
+.Approvebutton{
+    background:    #15d798;
+border-radius: 11px;
+padding:       20px 40px;
+color:         #ffffff;
+display:       inline-block;
+border: none;
+font-weight: 800;
+text-align:    center;
+transition: transform 0.3s ease-in-out; 
+}
+.Approvebutton:hover{
+    transform: translateY(-5px); 
+}
+
+.Rejectbutton{
+    background:    #d73915;
+    border-radius: 11px;
+    padding:       20px 40px;
+    color:         #ffffff;
+    display:       inline-block;
+    border: none;
+    font-weight: 800;
+    text-align:    center;
+    transition: transform 0.3s ease-in-out; 
+}
+.Rejectbutton:hover{
+    transform: translateY(-5px); 
+}
+ td {
+    padding: 10px; /* Add padding to cells if needed */
+    border: 1px solid #ccc; /* Add cell borders if needed */
+  }

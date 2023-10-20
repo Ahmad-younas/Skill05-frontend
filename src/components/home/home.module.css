@@ -1,0 +1,408 @@
+.imagecontent{
+    top: 0;
+    height: auto;
+    width: 100%;
+    position: absolute; 
+}
+.bgImage{
+    width: 100%;
+
+}
+.navbarwrapper{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+     
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+li{
+    list-style: none;
+}
+
+
+.mainnav{
+    display: grid;
+    grid-template-columns: 10rem 1fr 3fr 2fr 10rem;
+  
+    
+}
+.logo{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    grid-column: 1.5/3;
+    padding: 10px;
+}
+
+.menulink ul{
+    grid-column: 3/4;
+    background-color: black;
+
+   
+}
+
+.menulink ul{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.menulink ul li{
+    margin-right: 4rem;
+    display: none;
+}
+.excesslink{
+    grid-column: 4/5;
+}
+.hamberge{
+
+    background-color: #9D1306;
+}
+.excesslink ul{
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: #bb1405;
+    display: none;
+
+}
+.excesslink ul li:first-child{
+    margin-right: 4rem;
+
+}
+.SearchBar{
+    width: 100%;
+    height: 80px;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 50px;
+    display: flex;
+    z-index: -1;
+    align-items: center;
+    justify-content: space-around;
+    -webkit-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+}
+.CustomInput{
+    border: none;
+    width: 70%;
+    height: 35%;
+    outline: none;
+    margin-left:10px ;
+    margin-right:10px ;
+}
+.customSearchbutton{
+    background-color: #bb1405;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    transition: transform 0.1s;
+}
+
+.customSearchbutton:hover{
+    transform: translateY(-2px);
+    background-color: #9D1306;
+}
+
+.jobCategoryRow{
+    margin-top: 30px;
+}
+
+.jobCategory{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  
+ 
+}
+.jobBox{
+    border: 1px solid #fee9d6;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    height:'20px';
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 50px;
+    width: 200px;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+.jobBox p{
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.jobBox:hover{
+    border: 1px solid #ff9248;
+    color: #ff6700;
+    font-weight: bold;
+}
+.jobBox{
+    border: 1px solid 	#fee9d6;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: transform 0.2s;
+    background-color: #f8f2ed;
+    width: auto;
+
+}
+.Skills{
+    height: auto;
+    width: auto;
+    padding: 10px;
+    margin-right: 10px;
+    background-color:antiquewhite;
+    align-items: center;
+    border-radius: 5px;
+}
+.HeroSection{
+    margin-top: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+    height: 550px;
+    
+}
+.HeroText{
+    font-size: 60px;
+    text-transform: capitalize;
+    align-items: start;
+
+}
+.HeroRow{
+    margin-top: 100px;
+}
+.HeroDescription{
+    margin-top: 30px;
+}
+.HeroImage{
+    /* height: "300px",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat", */
+    height: 550px;
+}
+
+.dividerContainer{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.divider{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #fee9d6;
+    background-color: #f8f2ed;
+}
+.popularSearch{
+    margin-top: 20px;
+    display: flex;
+}
+.popularSearch strong{
+    color: #526066
+}
+.popularSearch p{
+    color: #727673;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px ) { 
+    .HeroSection{
+        height: auto;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+    .HeroText{
+        font-size: 20px;
+        margin-top: 0px;
+    }
+    .HeroRow{
+        margin-top: 0px;
+    }
+    .HeroDescription{
+        margin-top: 1px;
+        font-size: 12px;
+    }
+    .SearchBar{
+        width: 50%;
+        height: 50px;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: 0px;
+        display: flex;
+        z-index: -1;
+        align-items: center;
+        justify-content: start;
+        -webkit-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    }
+    .HeroImage{
+        display: none;
+    }
+    .dividerContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .divider{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #fee9d6;
+        background-color: #f8f2ed;
+        width: auto;
+    }
+    .dividerLeftImage{
+        width: 100px;
+        height: 100px;
+        margin-top: 50px;
+    }
+    .dividerRightImage{
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+    }
+    .dividerCenterparafirst{
+        text-transform: uppercase;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    .dividerCenterheading{
+        font-size: medium;
+    }
+    .dividerCenterparasecond{
+        margin-left: 30px;
+        margin-right:0px;
+        width: max-content;
+    }
+    .imagecontent{
+        top: 0;
+        height: auto;
+        width: 100%;
+        position: absolute;
+    }
+    .customSearchbutton{
+        background-color: #bb1405;
+        display: flex;
+        height: 30px;
+        align-items: center;
+        margin-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        transition: transform 0.1s;
+    }
+    .popularSearch{
+        margin-top: 10px;
+        display: flex;
+    }
+    .popularSearch strong{
+        color: #526066;
+        font-size: 12px;
+
+    }
+    .popularSearch p{
+        color: #727673;
+        text-decoration: underline;
+        font-size: smaller;
+    }
+   
+ }
+ @media (max-width: 991.98px) { 
+    .HeroSection{
+        height: auto;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+    .HeroText{
+        font-size: 20px;
+        margin-top: 0px;
+    }
+    .HeroRow{
+        margin-top: 0px;
+    }
+    .HeroDescription{
+        margin-top: 1px;
+        font-size: 16px;
+    }
+    .SearchBar{
+        width: 80%;
+        height: 50px;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: 0px;
+        display: flex;
+        z-index: -1;
+        align-items: center;
+        justify-content: start;
+        -webkit-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    }
+    .customSearchbutton{
+        background-color: #bb1405;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        margin-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        transition: transform 0.1s;
+    }
+    .HeroImage{
+       height: 200px;
+    }
+    .divider{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #fee9d6;
+        background-color: #f8f2ed;
+        margin-right: 20px;
+        width: auto;
+    }
+    .dividerLeftImage{
+        width: 100px;
+        height: 100px;
+        margin-top: 50px;
+    }
+    .dividerRightImage{
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+    }
+    .dividerCenterparafirst{
+        text-transform: uppercase;
+        margin-left: 20px;
+        margin-top: 20px;
+        
+    }
+    .dividerCenterheading{
+        font-size: large;
+    }
+    .dividerCenterparasecond{
+        margin-left: 30px;
+        margin-right:0px;
+        width: max-content;
+    }
+    
+  }
