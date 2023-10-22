@@ -4,10 +4,8 @@ import { Container, Row, Col, Form, Badge, Button } from "react-bootstrap";
 import rightImg from "../../assets/right-job-head.svg";
 import leftImg from "../../assets/left-job-head.svg";
 import Styles from "./jobs.module.css";
-import image1 from "../../assets/brand-1.png";
 import Footer from "../footer/Footer";
 import Pagination from "react-bootstrap/Pagination";
-import Select from "react-select";
 import searchIcon from "../../assets/icons8-search-24.png";
 import box from "../../assets/key-numbers.svg";
 import time from "../../assets/briefcase.svg";
@@ -40,7 +38,7 @@ const Job = () => {
   useEffect(() => {
     // Fetch data from the API when the component mount
     axios
-      .get("/api/recruiter/getpostedJob")
+      .get("http://localhost:3001/recruiter/getpostedJob")
       .then((data) => {
         console.log(data.data);
         setData(data.data);
@@ -120,19 +118,11 @@ const Job = () => {
       <Navbar />
 
       <div
-        style={{
-          paddingTop: "150px",
-          paddingLeft: "200px",
-          paddingRight: "200px",
-        }}
+        className={Styles.maindiv}
       >
         <Container
           fluid={true}
-          style={{
-            backgroundColor: "#ffd7b5",
-            height: "400px",
-            borderRadius: "20px",
-          }}
+          className={Styles.dividerContainer}
         >
           <Row style={{ height: "50%" }}>
             <Col
@@ -163,10 +153,10 @@ const Job = () => {
               }}
             >
               <div>
-                <img src={leftImg} />
+                <img src={leftImg} className={Styles.containerImage} />
               </div>
               <div>
-                <img src={rightImg} />
+                <img src={rightImg}  className={Styles.containerImage} />
               </div>
               <div className={Styles.SearchBar}>
                 <img src={box} style={{ marginLeft: "20px" }} />
@@ -210,321 +200,7 @@ const Job = () => {
             </Col>
           </Row>
           <Row>
-            {/* <Col xl={3}>
-              <Row>
-                <Col xl={12}>
-                  <div>
-                    <h5 style={{ fontWeight: "bold" }}>Popular keyWords</h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Software"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Developer"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Web"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <hr />
-                </Col>
-              </Row>
-              <Row>
-                <Col xl={12}>
-                  <div>
-                    <h5 style={{ fontWeight: "bold" }}>Position</h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Senior"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Junior"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Fresher"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <hr />
-                </Col>
-              </Row>
-              <Row>
-                <Col xl={12}>
-                  <div>
-                    <h5 style={{ fontWeight: "bold" }}>Experience Level</h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Internship"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Entry Level"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Associate"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Mid Level"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <hr />
-                </Col>
-              </Row>
-              <Row>
-                <Col xl={12}>
-                  <div>
-                    <h5 style={{ fontWeight: "bold" }}>Onsite/Remote</h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="On-site"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Remote"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Hybrid"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <hr />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col xl={12}>
-                  <div>
-                    <h5 style={{ fontWeight: "bold" }}>Job type</h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Full Time"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Part Time"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Remote Jobs"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Form.Check
-                      label="Freelancer"
-                      type="checkbox"
-                      aria-label="option 1"
-                    />
-                    <div className={Styles.customBage}>
-                      <p className={Styles.customBageText}>57</p>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Col> */}
-            <Col xl={12} style={{ padding: "20px" }}>
+            <Col xl={12} md={12} sm={12} style={{ padding: "20px", }}>
               <Row>
                 {data
                   .filter((item) => {
@@ -536,9 +212,12 @@ const Job = () => {
                     <Col
                       key={dtaIndex}
                       xl={4}
+                      md={12}
+                      sm={12}
                       style={{
                         marginTop: "5px",
                         marginBottom: "5px",
+                        
                       }}
                     >
                       <div className={Styles.jobBox}>

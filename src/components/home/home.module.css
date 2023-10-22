@@ -4,6 +4,9 @@
     width: 100%;
     position: absolute; 
 }
+.navbarbackgroundColor{
+   background: transparent;
+}
 .bgImage{
     width: 100%;
 
@@ -196,7 +199,7 @@ li{
     /* height: "300px",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat", */
-    height: 550px;
+    height: 420px;
 }
 
 .dividerContainer{
@@ -221,8 +224,22 @@ li{
     color: #727673;
     text-decoration: underline;
 }
+.applyNowButton{
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff6700;
+}
+.applyNowButtonText{
+    padding: 9px 15px 15px 9px;
+    font-size: 12px;
+    color: white;
+}
 
-@media (min-width: 1199.98px ) and (max-width:1399.98px) { 
+@media (min-width: 1199.98px ) and (max-width:1299.98px) { 
     .HeroSection{
         height: auto;
         margin-right: 50px;
@@ -322,6 +339,20 @@ li{
         color: #727673;
         text-decoration: underline;
         font-size: 18px;
+    }
+    .applyNowButton{
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6700;
+    }
+    .applyNowButtonText{
+        padding: 9px 15px 15px 9px;
+        font-size: 12px;
+        color: white;
     }
    
  }
@@ -426,6 +457,20 @@ li{
         text-decoration: underline;
         font-size: smaller;
     }
+    .applyNowButton{
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6700;
+    }
+    .applyNowButtonText{
+        padding: 9px 15px 15px 9px;
+        font-size: 12px;
+        color: white;
+    }
    
  }
 @media (min-width: 768px ) and (max-width:991.98px) { 
@@ -529,13 +574,42 @@ li{
         text-decoration: underline;
         font-size: smaller;
     }
+    .applyNowButton{
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6700;
+    }
+    .applyNowButtonText{
+        padding: 9px 15px 15px 9px;
+        font-size: 12px;
+        color: white;
+    }
    
  }
  @media (min-width: 575.98px) and (max-width:768px) { 
+    .bCategory{
+        font-size: 20px;
+    }
+    .dividerContainer{
+        padding-left: 10px;
+        padding-right: 100px;
+        
+    }
     .HeroSection{
         height: auto;
         margin-right: 50px;
         margin-left: 50px;
+    }
+    .logoImg{
+        width: 50px;
+        height: 50px;
+    }
+    .brand{
+        font-size: 20px;
     }
     .HeroText{
         font-size: 12px;
@@ -565,6 +639,13 @@ li{
         -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
         box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
     }
+    .dividerContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 50px;
+        width: 100%;
+        
+    }
     .customSearchbutton{
         background-color: #bb1405;
         display: flex;
@@ -585,13 +666,12 @@ li{
         display: flex;
         justify-content: space-between;
         border: 1px solid #fee9d6;
-        background-color: #f8f2ed;
         margin-right: 20px;
         width: auto;
     }
     .dividerLeftImage{
-        width: 50px;
-        height: 50px;
+        width: 100px;
+        height: 100px;
         margin-top: 30px;
     }
     .dividerRightImage{
@@ -606,21 +686,119 @@ li{
         
     }
     .dividerCenterheading{
-        font-size: medium;
+        font-size: large;
     }
     .dividerCenterparasecond{
-        margin-left: 20px;
+        margin-left: 30px;
         margin-right:0px;
-        width: max-content;
+         width: max-content;
+    }
+    .popularSearch{
+        margin-top: 5px;
+        display: flex;
+    }
+    .popularSearch strong{
+        color: #526066;
+        font-size: 10px;
+
+    }
+    .popularSearch p{
+        color: #727673;
+        text-decoration: underline;
+        font-size: 9px;
+    }
+    .browsecategoryDivider{
+        margin-top: 40px;
+    }
+    .applyNowButton{
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6700;
+    }
+    .applyNowButtonText{
+        padding: 9px 3px 3px 3px;
+        font-size: 12px;
+        color: white;
+    }
+    .jobBox{
+        border: 1px solid 	#fee9d6;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        transition: transform 0.2s;
+        background-color: #f8f2ed;
+        width: 100%;
     }
     
   }
-  @media (max-width: 575.98px) {
+  @media (min-width:0px) and (max-width: 575.98px) {
+    .browseCategoryDivider{
+        margin-top: 50px;
+    }
+    .applyNowButton{
+        height: 40px;
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: #ff6700;
+    }
+    .applyNowButtonText{
+        padding: 9px 3px 3px 3px;
+        font-size: 12px;
+        color: white;
+    }
+
+    .jobCategoryBox{
+        border: 1px solid #fee9d6;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        height:'20px';
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 200px;
+        cursor: pointer;
+        margin-top: 10px;
+        
+    }
+    .jobCategoryBox p{
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+    
+    .jobCategoryBox:hover{
+        border: 1px solid #ff9248;
+        color: #ff6700;
+        font-weight: bold;
+    }
+   .jobBox{
+    border: 1px solid 	#fee9d6;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: transform 0.2s;
+    background-color: #f8f2ed;
+    width: 100%;
+    }
+    .logoImg{
+        width: 30px;
+        height: 30px;
+    }
+    .brand{
+        font-size: 16px;
+    }
     .HeroSection{
-      
+       
         height: auto;
         margin-right: 50px;
-        margin-left: 50px;margin-top: 70px;
+        margin-left: 50px;margin-top: 50px;
     }
     .HeroText{
         font-size: 10px;
@@ -635,8 +813,8 @@ li{
     }
     
     .SearchBar{
-        width: 70%;
-        height: 30px;
+        width: 100%;
+        height: 40px;
         border-radius: 5px;
         background-color: white;
         margin-top: 0px;
@@ -649,7 +827,6 @@ li{
         box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
     }
     .customSearchbutton{
-        background-color: #bb1405;
         display: flex;
         height: 30px;
         align-items: center;
@@ -665,15 +842,14 @@ li{
        display: none;
     }
     .dividerContainer{
-        padding-left: 0px;
-        padding-right: 0px;
         margin-top: 50px;
+        width: 100%;
+        
     }
     .divider{
         display: flex;
         justify-content: space-between;
         border: 1px solid #fee9d6;
-        
         width: auto;
     }
     .dividerLeftImage{
@@ -690,16 +866,37 @@ li{
     .dividerCenterparafirst{
         text-transform: uppercase;
         margin-left: 10px;
+        font-size: 12px;
         /* margin-top: 10px; */
         
     }
     .dividerCenterheading{
-        font-size: small;
+        font-size: 12px;
     }
     .dividerCenterparasecond{
-        margin-left: 20px;
+        margin-left: 10px;
         margin-right:0px;
+        font-size: 10px;
         width: max-content;
     }
+    .bCategory{
+        font-size: 20px;
+       
+    }
+    .popularSearch{
+        margin-top: 5px;
+        display: flex;
+    }
+    .popularSearch strong{
+        color: #526066;
+        font-size: 9px;
+
+    }
+    .popularSearch p{
+        color: #727673;
+        text-decoration: underline;
+        font-size: 8px;
+    }
+   
     
    }

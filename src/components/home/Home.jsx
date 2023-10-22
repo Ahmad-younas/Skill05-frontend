@@ -17,7 +17,7 @@ import finance from "../../assets/finance.svg";
 import management from "../../assets/management.svg";
 import market from "../../assets/marketing.svg";
 import human from "../../assets/human.svg";
-import Select from "react-select";
+import { Nav, Offcanvas } from "react-bootstrap";
 import time from "../../assets/briefcase.svg";
 import IconLocation from "../../assets/icon-location-2.svg";
 import TimeIcon from "../../assets/time.svg";
@@ -78,7 +78,7 @@ function Home() {
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
-      .get("/api/recruiter/getpostedJob")
+      .get("http://localhost:3001/recruiter/getpostedJob")
       .then((data) => {
         console.log(data.data);
         setData(data.data);
@@ -132,79 +132,77 @@ function Home() {
               <Navbars />
             ) : (
               <>
-                <nav className={`navbar-expand-sm ${Styles.mainnav}`}>
-                  <div className={Styles.logo}>
-                    <img src={icon} height={"50px"} width={"50px"} />
-                    <h2>
-                      <span style={{ fontWeight: "bold" }}>SkillQ5</span>
-                    </h2>
-                  </div>
-                  <div className={Styles.menulink}>
-                    <ul>
-                      <li>
-                        <Link
-                          style={{
-                            textDecoration: "none",
-                            color: "black",
-                          }}
-                          to={"/"}
-                        >
-                          Home
-                        </Link>
-                      </li>
+                <Navbar  expand={'md'} className="bg-*" >
+          <Container fluid >
+            <Navbar.Brand href="/" className="d-flex align-items-center px-5">
+            <img src={icon} height={"50px"} width={"50px"} />
+            <span style={{ fontWeight: "bold" }}>SkillQ5</span>
+            <h2>
 
-                      <li>
-                        <Link
-                          style={{ textDecoration: "none", color: "black" }}
-                          to="/jobs"
-                        >
-                          Jobs
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/aboutus"
-                          style={{ textDecoration: "none", color: "black" }}
-                        >
-                          About us
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className={Styles.excesslink}>
-                    <ul>
-                      <li
+            </h2>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-md`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-md`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
+                  Skill05
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav style={{alignItems:'center', width:'100%', justifyContent:'space-evenly'}}>
+                  <Link to={"/"} style={{
+                    textDecoration: "none",
+                    color: "black",
+                     
+                 }}>
+                    Home 
+                  </Link>
+                  <Link to={"/jobs"}  style={{
+                          textDecoration: "underline",
+                          color: "black",
+                        }}>
+                    Jobs
+                  </Link>
+                  <Link to={"/aboutus"} style={{
+                          textDecoration: "underline",
+                          color: "black",
+                        }}>
+                    About
+                  </Link>
+                </Nav>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Link
+                        to={"/register"}
                         style={{
                           textDecoration: "underline",
+                          color: "black",
                         }}
                       >
-                        <Link
-                          to="/register"
-                          style={{ textDecoration: "none", color: "black" }}
-                        >
-                          Register As Candidate
-                        </Link>
-                      </li>
-
-                      <li>
-                        <Button
-                          variant="contained"
-                          sx={{
-                            backgroundColor: "#D63232",
-                            borderRadius: "0.5rem",
-                            width: "auto",
-                            height: "50px",
-                          }}
-                          onClick={() => {
-                            navigate("/recuritersignin");
-                          }}
-                        >
-                          Post Job
-                        </Button>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
+                        Register As Candidate
+                    </Link>  
+                  <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "#D63232",
+                        borderRadius: "0.5rem",
+                        width: "auto",
+                        height: "50px",
+                      }}
+                      onClick={() => {
+                        navigate("/recuritersignin");
+                      }}
+                    >
+                      Post Job
+                  </Button> 
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
               </>
             )}
           </div>
@@ -279,21 +277,23 @@ function Home() {
           </div>
         </div>
       </div>
-      <Container fluid={true} className={Styles.dividerContainer}>
-        <Row className={`${Styles.bCategory}d-flex align-item-center justify-content-center`}>
+      <Container  className={Styles.dividerContainer}>
+        <Row className={`d-flex align-item-center justify-content-center`}>
           <Col
             xl={12}
             md={12}
-            sx={4}
-            className="d-flex align-item-center justify-content-center"
+            sx={12}
+            className={`${Styles.browsecategoryDivider} d-flex align-item-center justify-content-center`}
+            
           >
-            <h1>Browse by category</h1>
+            <h1 className={Styles.bCategory}>Browse by category</h1>
           </Col>
           <Col
             xl={12}
             md={12}
-            sx={4}
-            className="d-flex align-item-center justify-content-center"
+            sx={12}
+            className={'d-flex align-item-center justify-content-center'} 
+            
           >
             <h6>
               Find the job that’s perfect for you. about 800+ new jobs everyday
@@ -309,7 +309,7 @@ function Home() {
             marginLeft: "10px",
           }}
         >
-          <Col sm={12}>
+          <Col sm={12} xl={12} md={12}>
             <div className={Styles.divider}>
               <img src={bgLeftHiring} className={Styles.dividerLeftImage} />
               <div
@@ -330,16 +330,9 @@ function Home() {
                   <br />& Explore Opportunities
                 </p>
                 <button
-                  style={{
-                    height: "40px",
-                    marginTop: "30px",
-                    marginLeft: "20px",
-                    borderRadius: "5px",
-                    border: "none",
-                    backgroundColor: "#ff6700",
-                  }}
+                  className={Styles.applyNowButton}
                 >
-                  <span style={{ padding: "10px", color: "white" }}>
+                  <span className={Styles.applyNowButtonText}>
                     Applynow
                   </span>
                 </button>
@@ -351,8 +344,8 @@ function Home() {
         <Row style={{ marginTop: "50px" }}>
           <Col
             xl={12}
-            md={12}
-            sx={4}
+            md={5}
+            sx={12}
             className="d-flex align-item-center justify-content-center"
           >
             <h1>Jobs of the day</h1>
@@ -361,11 +354,11 @@ function Home() {
         <Row style={{ marginTop: "10px" }}>
           <Col
             xl={12}
-            md={12}
-            sx={4}
+            md={6}
+            sx={12}
             className="d-flex align-item-center justify-content-center"
           >
-            <h6 style={{ color: "#ff6700" }}>
+            <h6 style={{ color: "#ff6700", textAlign:'center' }}>
               Search and connect with the right candidates faster.
             </h6>
           </Col>
@@ -373,23 +366,23 @@ function Home() {
 
         <Row className={Styles.jobCategoryRow}>
           <div className={Styles.jobCategory}>
-            <div className={Styles.jobBox}>
+            <div className={Styles.jobCategoryBox}>
               <img src={management} alt="SkillQ5" />
               <p>Management</p>
             </div>
-            <div className={Styles.jobBox}>
+            <div className={Styles.jobCategoryBox}>
               <img src={market} alt="SkillQ5" />
               <p>Marketing & Sale</p>
             </div>
-            <div className={Styles.jobBox}>
+            <div className={Styles.jobCategoryBox}>
               <img src={finance} alt="SkillQ5" />
               <p>Finance</p>
             </div>
-            <div className={Styles.jobBox}>
+            <div className={Styles.jobCategoryBox}>
               <img src={human} alt="SkillQ5" />
               <p>Human Resource</p>
             </div>
-            <div className={Styles.jobBox}>
+            <div className={Styles.jobCategoryBox}>
               <img src={content} alt="SkillQ5" />
               <p>Content Writer</p>
             </div>
@@ -398,7 +391,6 @@ function Home() {
       </Container>
       <Container
         className="mt-4 "
-        style={{ paddingLeft: "200px", paddingRight: "200px" }}
         fluid={true}
       >
         <Row>
@@ -411,7 +403,7 @@ function Home() {
             .map((dta, dtaIndex) => (
               <Col
                 key={dtaIndex}
-                xl={4}
+                xl={4} md={6} sm={12}
                 style={{
                   marginTop: "5px",
                   marginBottom: "5px",
@@ -446,7 +438,7 @@ function Home() {
                       </div>
                     </div>
 
-                    <Col>
+                    <Col >
                       <div style={{ paddingTop: "10px" }}>
                         <h6 style={{ fontWeight: "bold" }}>{dta.JobTitle}</h6>
                       </div>

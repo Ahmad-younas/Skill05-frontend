@@ -9,7 +9,6 @@ import Styles from "../signinPage/signinPage.module.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-
 const RecuriterSigninPage = () => {
   const navigation = useNavigate();
   const [formData, setFormData] = useState({
@@ -27,7 +26,7 @@ const RecuriterSigninPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("/api/recruiter/recruiterLogin", formData)
+      .post("http://localhost:3001/recruiter/recruiterLogin", formData)
       .then(async (res) => {
         if (res.status === 200) {
           const { token } = res.data;
@@ -55,7 +54,7 @@ const RecuriterSigninPage = () => {
         <Container style={{ paddingTop: "10rem" }}>
           <Row>
             <Col></Col>
-            <Col xl={4} md={4}>
+            <Col xl={4} md={4} sm={12}>
               <p
                 style={{
                   display: "flex",
@@ -205,6 +204,7 @@ const RecuriterSigninPage = () => {
             <Col
               xl={4}
               md={4}
+              sm={12}
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -224,7 +224,7 @@ const RecuriterSigninPage = () => {
                 alignItems: "start",
               }}
             >
-              <img src={img3} />
+              <img src={img3} className={Styles.treeImg} />
             </Col>
           </Row>
           <Footer />

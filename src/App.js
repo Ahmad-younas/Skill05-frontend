@@ -17,6 +17,7 @@ import RecuriterSigninPage from "./components/recuriterSigninPage/RecuriterSigni
 import JobsApplicants from "./components/Admin/jobApplicants/JobsApplicants";
 import ShortListCandidate from "./components/dashboard/shortListCandidate/ShortListCandidate";
 import FinalCall from "./components/dashboard/finalCall/FinalCall";
+import NotFound from "./components/notFound/NotFound";
 function App() {
   return (
     <Routes>
@@ -41,6 +42,7 @@ function App() {
       <Route path="/jobapplicants" element={<JobsApplicants />} />
       <Route path="/allcandidate" element={<ShortListCandidate />} />
       <Route path="/shortlistedCandidate" element={<FinalCall />} />
+      <Route path="*" element={<NotFound/>} />
     </Routes>
   );
 }

@@ -66,7 +66,7 @@ const SigninPage = (props) => {
         <Container style={{ paddingTop: "10rem" }}>
           <Row>
             <Col></Col>
-            <Col xl={4} md={4}>
+            <Col xl={4} md={4} sm={12}>
               <p
                 style={{
                   display: "flex",
@@ -208,7 +208,7 @@ const SigninPage = (props) => {
                     }}
                   >
                     <p>Don't have an account</p>
-                    <Link to="Signin">Sign in</Link>
+                    <Link to="/register">Sign Up</Link>
                   </div>
                 </Form>
               </div>
@@ -216,6 +216,7 @@ const SigninPage = (props) => {
             <Col
               xl={4}
               md={4}
+              sm={12}
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -229,13 +230,14 @@ const SigninPage = (props) => {
             <Col
               xl={12}
               md={12}
+              sm={12}
               style={{
                 display: "flex",
                 justifyContent: "start",
                 alignItems: "start",
               }}
             >
-              <img src={img3} />
+              <img src={img3} className={Styles.buildingImage}   />
             </Col>
           </Row>
           <Footer />

@@ -21,3 +21,13 @@
 .placeholderColor::placeholder {
     color: #D3D3D3; /* Change this to the desired color */
 }
+
+@media (min-width:0px) and (max-width: 575.98px){
+    .treeImg{
+        height: 100px;
+    }
+    .buildingImage{
+        height:200px;
+        width: 300px;
+    }
+}
