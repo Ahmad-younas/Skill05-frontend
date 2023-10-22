@@ -78,7 +78,7 @@ function Home() {
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
-      .get("http://localhost:3001/recruiter/getpostedJob")
+      .get("/api/recruiter/getpostedJob")
       .then((data) => {
         console.log(data.data);
         setData(data.data);

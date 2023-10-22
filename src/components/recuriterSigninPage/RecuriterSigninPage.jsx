@@ -26,7 +26,7 @@ const RecuriterSigninPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:3001/recruiter/recruiterLogin", formData)
+      .post("/api/recruiter/recruiterLogin", formData)
       .then(async (res) => {
         if (res.status === 200) {
           const { token } = res.data;
