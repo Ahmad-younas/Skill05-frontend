@@ -280,7 +280,7 @@ function Home() {
         </div>
       </div>
       <Container fluid={true} className={Styles.dividerContainer}>
-        <Row className="d-flex align-item-center justify-content-center">
+        <Row className={`${Styles.bCategory}d-flex align-item-center justify-content-center`}>
           <Col
             xl={12}
             md={12}
@@ -428,7 +428,7 @@ function Home() {
                       }}
                     >
                       <img
-                        src={`http://localhost:3001/images/${dta.companyLogo}`}
+                        src={`/images/${dta.companyLogo}`}
                         alt="SkillQ5"
                         width={"100px"}
                         height={"100px"}

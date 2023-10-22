@@ -1,4 +1,9 @@
 .socialLinks{
-    margin-right: 5px;
-    
+    margin-right: 5px;   
+}
+.footerSection{
+    display: flex;
+    flex-direction: column;
+    align-items: 'center';
+    margin-top: 20px;
 }

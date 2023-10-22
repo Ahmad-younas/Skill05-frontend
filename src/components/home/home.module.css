@@ -204,7 +204,7 @@ li{
     padding-right: 200px;
 }
 .divider{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     border: 1px solid #fee9d6;
@@ -222,7 +222,110 @@ li{
     text-decoration: underline;
 }
 
-@media (max-width: 768px ) { 
+@media (min-width: 1199.98px ) and (max-width:1399.98px) { 
+    .HeroSection{
+        height: auto;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+    .HeroText{
+        font-size: 30px;
+        margin-top: 20px;
+    }
+    .HeroRow{
+        margin-top: 10px;
+    }
+    .HeroDescription{
+        margin-top: 1px;
+        font-size: 16px;
+    }
+    .SearchBar{
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: 0px;
+        display: flex;
+        z-index: -1;
+        align-items: center;
+        justify-content: start;
+        -webkit-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    }
+    .HeroImage{
+        height: 300px;
+    }
+    .dividerContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .divider{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #fee9d6;
+        background-color: #f8f2ed;
+        width: auto;
+    }
+    .dividerLeftImage{
+        width: 100px;
+        height: 100px;
+        margin-top: 50px;
+    }
+    .dividerRightImage{
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+    }
+    .dividerCenterparafirst{
+        text-transform: uppercase;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    .dividerCenterheading{
+        font-size: x-large;
+    }
+    .dividerCenterparasecond{
+        margin-left: 30px;
+        margin-right:0px;
+        width: max-content;
+    }
+    .imagecontent{
+        top: 0;
+        height: auto;
+        width: 100%;
+        position: absolute;
+    }
+    .customSearchbutton{
+        background-color: #bb1405;
+        display: flex;
+        height: 40px;
+        align-items: center;
+        margin-right: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        transition: transform 0.1s;
+    }
+    .popularSearch{
+        margin-top: 30px;
+        display: flex;
+    }
+    .popularSearch strong{
+        color: #526066;
+        font-size: 18px;
+
+    }
+    .popularSearch p{
+        color: #727673;
+        text-decoration: underline;
+        font-size: 18px;
+    }
+   
+ }
+@media (min-width: 991.98px ) and (max-width:1199.98px) { 
     .HeroSection{
         height: auto;
         margin-right: 50px;
@@ -240,7 +343,110 @@ li{
         font-size: 12px;
     }
     .SearchBar{
-        width: 50%;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: 0px;
+        display: flex;
+        z-index: -1;
+        align-items: center;
+        justify-content: start;
+        -webkit-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    }
+    .HeroImage{
+        height: 200px;
+    }
+    .dividerContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .divider{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #fee9d6;
+        background-color: #f8f2ed;
+        width: auto;
+    }
+    .dividerLeftImage{
+        width: 100px;
+        height: 100px;
+        margin-top: 50px;
+    }
+    .dividerRightImage{
+        width: 150px;
+        height: 150px;
+        margin-top: 30px;
+    }
+    .dividerCenterparafirst{
+        text-transform: uppercase;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    .dividerCenterheading{
+        font-size: medium;
+    }
+    .dividerCenterparasecond{
+        margin-left: 30px;
+        margin-right:0px;
+        width: max-content;
+    }
+    .imagecontent{
+        top: 0;
+        height: auto;
+        width: 100%;
+        position: absolute;
+    }
+    .customSearchbutton{
+        background-color: #bb1405;
+        display: flex;
+        height: 30px;
+        align-items: center;
+        margin-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        transition: transform 0.1s;
+    }
+    .popularSearch{
+        margin-top: 10px;
+        display: flex;
+    }
+    .popularSearch strong{
+        color: #526066;
+        font-size: 12px;
+
+    }
+    .popularSearch p{
+        color: #727673;
+        text-decoration: underline;
+        font-size: smaller;
+    }
+   
+ }
+@media (min-width: 768px ) and (max-width:991.98px) { 
+    .HeroSection{
+        height: auto;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+    .HeroText{
+        font-size: 20px;
+        margin-top: 0px;
+    }
+    .HeroRow{
+        margin-top: 0px;
+    }
+    .HeroDescription{
+        margin-top: 1px;
+        font-size: 12px;
+    }
+    .SearchBar{
+        width: 100%;
         height: 50px;
         border-radius: 5px;
         background-color: white;
@@ -325,14 +531,14 @@ li{
     }
    
  }
- @media (max-width: 991.98px) { 
+ @media (min-width: 575.98px) and (max-width:768px) { 
     .HeroSection{
         height: auto;
         margin-right: 50px;
         margin-left: 50px;
     }
     .HeroText{
-        font-size: 20px;
+        font-size: 12px;
         margin-top: 0px;
     }
     .HeroRow{
@@ -340,11 +546,14 @@ li{
     }
     .HeroDescription{
         margin-top: 1px;
-        font-size: 16px;
+        font-size: 11px;
+    }
+    .HeroImage{
+        display: none;
     }
     .SearchBar{
-        width: 80%;
-        height: 50px;
+        width: 70%;
+        height: 40px;
         border-radius: 5px;
         background-color: white;
         margin-top: 0px;
@@ -359,7 +568,7 @@ li{
     .customSearchbutton{
         background-color: #bb1405;
         display: flex;
-        height: 40px;
+        height: 30px;
         align-items: center;
         margin-right: 10px;
         padding-left: 5px;
@@ -370,7 +579,7 @@ li{
         transition: transform 0.1s;
     }
     .HeroImage{
-       height: 200px;
+       height: 100px;
     }
     .divider{
         display: flex;
@@ -381,28 +590,116 @@ li{
         width: auto;
     }
     .dividerLeftImage{
-        width: 100px;
-        height: 100px;
-        margin-top: 50px;
+        width: 50px;
+        height: 50px;
+        margin-top: 30px;
     }
     .dividerRightImage{
-        width: 150px;
-        height: 150px;
-        margin-top: 30px;
+        width: 100px;
+        height: 100px;
+        margin-top: 20px;
     }
     .dividerCenterparafirst{
         text-transform: uppercase;
-        margin-left: 20px;
-        margin-top: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
         
     }
     .dividerCenterheading{
-        font-size: large;
+        font-size: medium;
     }
     .dividerCenterparasecond{
-        margin-left: 30px;
+        margin-left: 20px;
         margin-right:0px;
         width: max-content;
     }
     
   }
+  @media (max-width: 575.98px) {
+    .HeroSection{
+      
+        height: auto;
+        margin-right: 50px;
+        margin-left: 50px;margin-top: 70px;
+    }
+    .HeroText{
+        font-size: 10px;
+        margin-top: 0px;
+    }
+    .HeroRow{
+        margin-top: 0px;
+    }
+    .HeroDescription{
+        margin-top: 1px;
+        font-size: 10px;
+    }
+    
+    .SearchBar{
+        width: 70%;
+        height: 30px;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: 0px;
+        display: flex;
+        z-index: -1;
+        align-items: center;
+        justify-content: start;
+        -webkit-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 85px -36px rgba(0,0,0,0.75);
+    }
+    .customSearchbutton{
+        background-color: #bb1405;
+        display: flex;
+        height: 30px;
+        align-items: center;
+        margin-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        transition: transform 0.1s;
+    }
+    .HeroImage{
+       display: none;
+    }
+    .dividerContainer{
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-top: 50px;
+    }
+    .divider{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #fee9d6;
+        
+        width: auto;
+    }
+    .dividerLeftImage{
+        width: 30px;
+        height: 30px;
+        margin-top: 30px;
+    }
+    .dividerRightImage{
+        width: 50px;
+        height: 50px;
+        margin-top: 20px;
+        margin-right: 50px;
+    }
+    .dividerCenterparafirst{
+        text-transform: uppercase;
+        margin-left: 10px;
+        /* margin-top: 10px; */
+        
+    }
+    .dividerCenterheading{
+        font-size: small;
+    }
+    .dividerCenterparasecond{
+        margin-left: 20px;
+        margin-right:0px;
+        width: max-content;
+    }
+    
+   }

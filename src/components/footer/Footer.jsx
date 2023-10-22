@@ -1,16 +1,19 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import logo from '../../assets/icon.png'
-import linkedIn from '../../assets/linkedin.svg'
-import facebook from '../../assets/facebook.svg'
-import twitter from '../../assets/twitter.svg'
+import { Col, Row } from 'react-bootstrap';
+import logo from '../../assets/icon.png';
+import linkedIn from '../../assets/linkedin.svg';
+import facebook from '../../assets/facebook.svg';
+import twitter from '../../assets/twitter.svg';
+import andriodLogo from '../../assets/downloadandriod-logo.png';
+import IOSLogo from '../../assets/downloadIOS-logo.png';
 import Styles from './footer.module.css'
+import { Link } from 'react-router-dom';
 const Footer = (props) => {
     return (
         <footer>
             <hr />
             <Row style={{ marginTop: '3rem', marginBottom: '3rem' }}>
-                <Col xl={4}>
+                <Col xl={4} md={12} sm={12} >
                     <div
                         style={{
                             display: 'flex',
@@ -39,7 +42,7 @@ const Footer = (props) => {
                         
                     </div>
                 </Col>
-                <Col xl={4}>
+                <Col xl={4} md={12} sm={12} className={Styles.footerSection} >
                     <h5 style={{fontWeight:'bold'}}>More</h5>
                     <div style={{ marginTop: '20px' }}>
                         <p>Privacy</p>
@@ -48,14 +51,20 @@ const Footer = (props) => {
                     </div>
                 </Col>
 
-                <Col xl={4}>
+                <Col xl={4} md={12} sm={12} className={Styles.footerSection}>
                     <h5 style={{fontWeight:'bold'}}>Download App</h5>
-                    <div style={{ marginTop: '20px' }}>description here</div>
+                    <Link to="/">
+                    <img src={andriodLogo} width={'120px'}/>
+                    </Link>
+                    <Link to="/">
+                    <img src={IOSLogo} width={'120px'}/>
+                    </Link>
+                    
                 </Col>
             </Row>
             <hr />
             <Row style={{ marginTop: '40px' }}>
-                <Col xl={12}>
+                <Col xl={4} md={6} sm={12}>
                     <div>
                         <p>
                             Copyright &#169; {new Date().getFullYear()} skill05

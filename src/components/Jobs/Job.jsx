@@ -552,7 +552,7 @@ const Job = () => {
                             }}
                           >
                             <img
-                              src={`http://localhost:3001/images/${dta.companyLogo}`}
+                              src={`/images/${dta.companyLogo}`}
                               alt="SkillQ5"
                               width={"100px"}
                               height={"100px"}
