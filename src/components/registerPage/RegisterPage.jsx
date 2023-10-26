@@ -33,7 +33,7 @@ const RegisterPage = (props) => {
       .post("/api/candidate/candidateSignUp", formData)
       .then((res) => {
         if (res.status === 201) {
-          toast.success("Login Successfully");
+          toast.success("Account successfully created");
           console.log("Form data sent successfully");
           setFormData({
             name: "",

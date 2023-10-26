@@ -26,11 +26,7 @@ const AdminLogin = () => {
 
     e.preventDefault();
     await axios
-      .post("/api/admin/loginadmin", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post("/api/admin/loginadmin", formData)
       .then(async (res) => {
         if (res.status === 200) {
           const { token } = res.data;
@@ -49,6 +45,13 @@ const AdminLogin = () => {
       })
       .catch((err) => {
         if (err.response.status === 401) {
+          console.log("message", err.response.data.error);
+          toast.warn(err.response.data.error);
+          setFormData({
+            password: "",
+            email: "",
+          });
+        }else{
           console.log("message", err.response.data.error);
           toast.warn(err.response.data.error);
           setFormData({

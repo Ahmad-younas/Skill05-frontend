@@ -79,7 +79,8 @@ const Job = () => {
     formDataToSend.append("education", formData.education);
     console.log(...formDataToSend);
     const storedToken = localStorage.getItem("token");
-    await axios
+    if(storedToken){
+      await axios
       .post("/api/candidate/candidateapplyJob", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -102,6 +103,9 @@ const Job = () => {
       .catch((error) => {
         console.log("Error:", error);
       });
+    }else{
+      navigation("/signin")
+    }
   };
   const style = {
     control: (base) => ({

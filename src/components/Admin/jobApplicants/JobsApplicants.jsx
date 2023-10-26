@@ -26,12 +26,17 @@ const JobsApplicants = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+  const storedToken = localStorage.getItem("token");
   const handleUpdate = async (id) => {
     const formdata = {
       uid: id,
     };
     await axios
-      .put("/api/admin/updaterecuriter", formdata)
+      .put("/api/admin/updaterecuriter", formdata,{
+        headers: {
+          Authorization: `Bearer ${storedToken}`
+        },
+      })
       .then(async (res) => {
         console.log(res.data);
         if (res.status === 200) {
@@ -41,6 +46,10 @@ const JobsApplicants = () => {
       })
       .catch((err) => {
         console.log("error", err);
+        if (err.response.status === 401) {
+          console.log("message", err.response);
+          toast.warn(err.response.data.message);
+        }
       });
   }; // Use Axios to send a POST request;
   return (

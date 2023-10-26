@@ -32,7 +32,7 @@ const RecuriterRegisterPage = () => {
       .post("/api/recruiter/recruiterSignUp", formData)
       .then((res) => {
         if (res.status === 201) {
-          toast.success("Login Successfully");
+          toast.success("Account Successfully Created");
           console.log("Form data sent successfully");
           setFormData({
             name: "",
