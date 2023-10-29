@@ -10,8 +10,11 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
+
 const RegisterPage = (props) => {
-  const navigation = useNavigate;
+  const navigation = useNavigate();
+  const [verified, setVerified] = useState(false);
+  const [loginType, setLoginType] = useState('candidate');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,6 +22,11 @@ const RegisterPage = (props) => {
     password: "",
     repassword: "",
   });
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -27,13 +35,14 @@ const RegisterPage = (props) => {
     });
   };
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (loginType === 'candidate') {
+      e.preventDefault();
 
     await axios
       .post("/api/candidate/candidateSignUp", formData)
       .then((res) => {
         if (res.status === 201) {
-          toast.success("Account successfully created");
+           toast.success("Account successfully created");
           console.log("Form data sent successfully");
           setFormData({
             name: "",
@@ -42,18 +51,46 @@ const RegisterPage = (props) => {
             password: "",
             repassword: "",
           });
-          navigation("/signin");
+          setTimeout(() => {
+            navigation("/signin");
+            console.log("QWERTY");
+          }, 3000);
         }
       })
       .catch((err) => {
         console.log("error", err.status);
-      }); // Use Axios to send a POST request
+      });
+    } else if(loginType === 'recruiter'){
+      e.preventDefault();
+
+      await axios
+        .post("/api/recruiter/recruiterSignUp", formData)
+        .then((res) => {
+          if (res.status === 201) {
+            toast.success("your request have been submit it will take 24 hour to procress once it approve you will get an email");
+            setFormData({
+              name: "",
+              email: "",
+              username: "",
+              password: "",
+              repassword: "",
+            });
+            setTimeout(() => {
+              console.log("qwertyu");
+              navigation("/");
+            }, 3000);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <React.Fragment>
       <Navbar />
       <div>
-        <Container style={{ paddingTop: "10rem" }}>
+        <Container style={{ paddingTop: "5rem" }}>
           <Row>
             <Col></Col>
             <Col xl={4} md={4}>
@@ -66,7 +103,7 @@ const RegisterPage = (props) => {
               >
                 <h1 style={{ fontWeight: "bold" }}>Start Today</h1>
               </div>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -82,9 +119,9 @@ const RegisterPage = (props) => {
                 >
                   Sign up with google
                 </Button>
-              </div>
+              </div> */}
 
-              <div
+              {/* <div
                 style={{
                   marginTop: "2rem",
                   display: "flex",
@@ -113,7 +150,7 @@ const RegisterPage = (props) => {
                     paddingBottom: "13px",
                   }}
                 />
-              </div>
+              </div> */}
               <div style={{ marginTop: "0.5rem" }}>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group
@@ -191,11 +228,30 @@ const RegisterPage = (props) => {
                       className={Styles.placeholderColor}
                     />
                   </Form.Group>
+                  <div  style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}>
+                      <div>
+                      <input type="radio" value="candidate"
+                        checked={loginType === 'candidate'}
+                        onChange={() => setLoginType('candidate')}
+                      /> SignUp AS Candidate<br/>
+                     </div>
+                     <div>
+                     <input type="radio"
+                      value="recruiter"
+                      checked={loginType === 'recruiter'}
+                      onChange={() => setLoginType('recruiter')}
+                     /> SignUp As Recuriter<br/>
+                     </div>
+                  </div>
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
+                      marginTop:'10px'
                     }}
                   >
                     <Form.Check // prettier-ignore

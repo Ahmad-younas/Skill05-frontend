@@ -10,6 +10,11 @@ import { useNavigate } from "react-router-dom";
 const JobsApplicants = () => {
   const [data, setData] = useState([]);
   const navigation = useNavigate();
+  const tokenWithBearer = localStorage.getItem("token");
+  const tokenParts = tokenWithBearer.split(' ');
+  const token = tokenParts[0];
+
+  console.log(token);
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     navigation("/admin");
@@ -26,7 +31,6 @@ const JobsApplicants = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  const storedToken = localStorage.getItem("token");
   const handleUpdate = async (id) => {
     const formdata = {
       uid: id,
@@ -34,12 +38,13 @@ const JobsApplicants = () => {
     await axios
       .put("/api/admin/updaterecuriter", formdata,{
         headers: {
-          Authorization: `Bearer ${storedToken}`
+          Authorization: `Bearer ${token}`
         },
       })
       .then(async (res) => {
-        console.log(res.data);
+        console.log("resData", res.data);
         if (res.status === 200) {
+          console.log("QEREREWR");
           setData(res.data);
           toast.success("Permission Granted");
         }

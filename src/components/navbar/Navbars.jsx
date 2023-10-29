@@ -6,11 +6,17 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Nav, Container, Navbar, Offcanvas } from "react-bootstrap";
 import { useState } from "react";
+import profileicon from "../../assets/profileicon.png";
 function Navbars() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
 
   const handleOffcanvasToggle = () => setShowOffcanvas(!showOffcanvas);
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const logoutSession = () =>{
+    localStorage.removeItem('token');
+    navigate('/');
+  } 
   return (
 
     // <Navbar
@@ -148,30 +154,66 @@ function Navbars() {
                     About
                   </Link>
                 </Nav>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Link
+                <Nav className="justify-content-end ">
+                  {token?  <div className={Styles.profiledropdown}>
+      <div className={Styles.profileicon}>
+        {/* You can use an image or an icon for the profile icon */}
+        <img src={profileicon} alt="Profile Icon" />
+      </div>
+      <div className={Styles.dropdowncontent}>
+        <Link to="/portfolio">My Profile</Link>
+        <Link onClick={logoutSession}>Logout</Link>
+      </div>
+    </div> : <div style={{display:'flex'}}>
+                  <Link
                         to="/register"
                         style={{
                           textDecoration: "underline",
                           color: "black",
                         }}
                       >
-                        Register As Candidate
+                        <span>Register As Candidate</span>
                     </Link>  
+                    {/* <button className={Styles.logInButton} onClick={()=>{navigate("/signin")}}>Login</button>
+                    <button className={Styles.logInButton} onClick={()=>{navigate("/register")}}>Sign Up</button> */}
+
+                    <Link to={"/signin"} 
+                       style={{
+                        textDecoration: "underline",
+                        color: "black",
+                        marginRight:'30px',
+                        marginLeft:'10px',
+                        marginTop:'10px'
+                      }}
+                    >Login
+                    </Link>
+                    <Link
+                     to={"/register"}
+                       style={{
+                        textDecoration: "underline",
+                        color: "black",
+                        marginRight:'30px',
+                        marginTop:'10px'
+                      }}
+                    >
+                      <span>SignUp</span>
+                    </Link>
+
                   <Button
                       variant="contained"
                       sx={{
                         backgroundColor: "#D63232",
-                        borderRadius: "0.5rem",
+                        borderRadius: "5px",
                         width: "auto",
-                        height: "50px",
+                         height: "50px", 
                       }}
                       onClick={() => {
                         navigate("/recuritersignin");
                       }}
                     >
                       Post Job
-                  </Button> 
+                  </Button>
+                  </div> }
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

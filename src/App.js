@@ -18,6 +18,7 @@ import JobsApplicants from "./components/Admin/jobApplicants/JobsApplicants";
 import ShortListCandidate from "./components/dashboard/shortListCandidate/ShortListCandidate";
 import FinalCall from "./components/dashboard/finalCall/FinalCall";
 import NotFound from "./components/notFound/NotFound";
+import Portfolio from "./components/profile/Portfolio";
 function App() {
   return (
     <Routes>
@@ -42,6 +43,7 @@ function App() {
       <Route path="/jobapplicants" element={<JobsApplicants />} />
       <Route path="/allcandidate" element={<ShortListCandidate />} />
       <Route path="/shortlistedCandidate" element={<FinalCall />} />
+      <Route path="/portfolio" element={<Portfolio/>}/>
       <Route path="*" element={<NotFound/>} />
     </Routes>
   );

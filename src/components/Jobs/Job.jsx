@@ -340,8 +340,10 @@ const Job = () => {
               <Pagination count={10} color="primary" />
             </Col>
           </Row>
-          <Footer />
         </Container>
+        <section style={{marginLeft:'20px', marginRight:'20px'}}>
+        <Footer />
+        </section>
       </div>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>

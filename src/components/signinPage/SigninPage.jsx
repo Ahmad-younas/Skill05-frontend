@@ -9,13 +9,15 @@ import Styles from "../signinPage/signinPage.module.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-
+import ReCAPTCHA from "react-google-recaptcha";
 const SigninPage = (props) => {
   const navigation = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [loginType, setLoginType] = useState('candidate');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,46 +26,74 @@ const SigninPage = (props) => {
       [name]: value,
     });
   };
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await axios
-      .post("/api/candidate/candidateLogin", formData)
-      .then(async (res) => {
-        if (res.status === 200) {
-          const { token } = res.data;
-          localStorage.setItem("token", token);
-          toast.success("Login Successfully");
-          console.log("Form data sent successfully");
-          setFormData({
-            email: "",
-            password: "",
-          });
-
-          setTimeout(() => {
-            navigation("/");
-          }, 3000);
-        }
-      })
-      .catch((err) => {
-        if (err.response.status === 401) {
-          console.log("message", err.response.data.error);
-          toast.warn(err.response.data.error);
-          setFormData({
-            name: "",
-            email: "",
-            username: "",
-            password: "",
-            repassword: "",
-          });
-        }
-        console.log("error", err);
-      }); // Use Axios to send a POST request
+    if (loginType === 'candidate') {
+      e.preventDefault();
+      await axios
+        .post("/api/candidate/candidateLogin", formData)
+        .then(async (res) => {
+          if (res.status === 200) {
+            const { token } = res.data;
+            localStorage.setItem("token", token);
+            toast.success("please verify email for verification of your Account");
+            console.log("Form data sent successfully");
+            setFormData({
+              email: "",
+              password: "",
+            });
+  
+            setTimeout(() => {
+              navigation("/");
+            }, 3000);
+          }
+        })
+        .catch((err) => {
+          if (err.response.status === 401) {
+            console.log("message", err.response.data.error);
+            toast.warn(err.response.data.error);
+            setFormData({
+              name: "",
+              email: "",
+              username: "",
+              password: "",
+              repassword: "",
+            });
+          }
+          console.log("error", err);
+        }); 
+    } else if (loginType === 'recruiter') {
+      e.preventDefault();
+      await axios
+        .post("/api/recruiter/recruiterLogin", formData)
+        .then(async (res) => {
+          if (res.status === 200) {
+            const { token } = res.data;
+            localStorage.setItem("token", token);
+            toast.success("Login Successfully");
+            console.log("Form data sent successfully");
+            setFormData({
+              email: "",
+              password: "",
+            });
+  
+            setTimeout(() => {
+              navigation("/recuriterdasboard");
+            }, 3000);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <React.Fragment>
       <Navbar />
       <div>
-        <Container style={{ paddingTop: "10rem" }}>
+        <Container style={{ paddingTop: "5rem" }}>
           <Row>
             <Col></Col>
             <Col xl={4} md={4} sm={12}>
@@ -88,25 +118,6 @@ const SigninPage = (props) => {
               </div>
               <div
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: "2rem",
-                }}
-              >
-                <Button
-                  style={{
-                    width: "100%",
-                    backgroundColor: "#D63232",
-                    border: "none",
-                  }}
-                >
-                  Sign up with google
-                </Button>
-              </div>
-
-              <div
-                style={{
                   marginTop: "2rem",
                   display: "flex",
                   flexDirection: "row",
@@ -114,26 +125,26 @@ const SigninPage = (props) => {
                   justifyContent: "center",
                 }}
               >
-                <hr
+                {/* <hr
                   style={{
                     width: "100px",
                     paddingBottom: "13px",
                   }}
-                />
-                <p
+                /> */}
+                {/* <p
                   style={{
                     paddingLeft: "10px",
                     paddingRight: "10px",
                   }}
                 >
                   Or continue with
-                </p>
-                <hr
+                </p> */}
+                {/* <hr
                   style={{
                     width: "100px",
                     paddingBottom: "13px",
                   }}
-                />
+                /> */}
               </div>
               <div style={{ marginTop: "0.5rem" }}>
                 <Form onSubmit={handleSubmit}>
@@ -167,7 +178,24 @@ const SigninPage = (props) => {
                       onChange={handleChange}
                     />
                   </Form.Group>
-
+                  <div  style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}>
+                      <div>
+                      <input type="radio" value="candidate"
+                        checked={loginType === 'candidate'}
+                        onChange={() => setLoginType('candidate')}
+                      /> Login AS Candidate<br/>
+                     </div>
+                     <div>
+                     <input type="radio"
+                      value="recruiter"
+                      checked={loginType === 'recruiter'}
+                      onChange={() => setLoginType('recruiter')}
+                     /> Login As Recuriter<br/>
+                     </div>
+                  </div>
                   <div
                     style={{
                       display: "flex",
@@ -181,6 +209,10 @@ const SigninPage = (props) => {
                     />
                     <Link to={"/forgetpassword"}>Forget Password</Link>
                   </div>
+                  <ReCAPTCHA style={{marginTop:'20px', marginBottom:'20px'}}
+                      sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                         onChange={onChange}
+                  />
                   <div
                     style={{
                       display: "flex",
