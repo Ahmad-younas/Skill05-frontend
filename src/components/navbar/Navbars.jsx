@@ -2,7 +2,8 @@ import React from "react";
 import icon from "../../assets/icon.png";
 import Styles from "../navbar/navbar.module.css";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
+import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import { Nav, Container, Navbar, Offcanvas } from "react-bootstrap";
 import { useState } from "react";
@@ -134,25 +135,34 @@ function Navbars() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav style={{alignItems:'center', width:'100%', justifyContent:'space-evenly'}}>
-                  <Link to={"/"} style={{
+                  {/* <Link to={"/"} style={{
                     textDecoration: "none",
                     color: "black",
                      
                  }}>
                     Home 
-                  </Link>
-                  <Link to={"/jobs"}  style={{
+                  </Link> */}
+                   <Button variant="outline-danger" onClick={()=>{navigate("/")}}>
+                    Home
+                  </Button>
+                  <Button variant="outline-danger" onClick={()=>{navigate("/jobs")}}>
+                    Jobs
+                  </Button>
+                  {/* <Link to={"/jobs"}  style={{
                           textDecoration: "underline",
                           color: "black",
                         }}>
                     Jobs
-                  </Link>
-                  <Link to={"/aboutus"} style={{
+                  </Link> */}
+                  <Button variant="outline-danger" onClick={()=>{navigate("/aboutus")}}>
+                    About
+                  </Button>
+                  {/* <Link to={"/aboutus"} style={{
                           textDecoration: "underline",
                           color: "black",
                         }}>
                     About
-                  </Link>
+                  </Link> */}
                 </Nav>
                 <Nav className="justify-content-end ">
                   {token?  <div className={Styles.profiledropdown}>
@@ -200,13 +210,8 @@ function Navbars() {
                     </Link>
 
                   <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: "#D63232",
-                        borderRadius: "5px",
-                        width: "auto",
-                         height: "50px", 
-                      }}
+                      variant="danger"
+                      style={{width:'180px'}}
                       onClick={() => {
                         navigate("/recuritersignin");
                       }}

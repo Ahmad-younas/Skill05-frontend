@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../sideBar/SideBar";
 import TopBar from "../topBar/TopBar";
+import {Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 const AdminDashboard = () => {
   const [style, setStyle] = useState(
     "navbar-nav  sidebar sidebar-dark accordion"
@@ -14,6 +16,10 @@ const AdminDashboard = () => {
     localStorage.removeItem("jwtToken");
     navigation("/admin");
   };
+
+  const handleSubmit = ()=>{
+    toast.success("Successfully Save");
+  }
   const changeStyle = () => {
     if (
       style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -48,6 +54,27 @@ const AdminDashboard = () => {
               <div className="container-fluid">
                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
                   <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
+                </div>
+                <div className="d-sm-flex  mb-4m" style={{flexDirection:'column'}}>
+                  <Form onSubmit={handleSubmit}>
+                  <Form.Group controlId="email">
+                  <Form.Label>Add Category:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="category"
+                    required
+                  />
+                </Form.Group>
+                <Form.Group controlId="email">
+                  <Form.Label>Add Country:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="country"
+                    required
+                  />
+                </Form.Group>
+                <Button className='mt-2 btn btn-danger' type='submit'>Save Changes</Button>
+                </Form>
                 </div>
               </div>
               {/*   <!-- /.container-fluid --> */}
@@ -116,6 +143,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
+        <ToastContainer/>
       </body>
     </div>
   );
