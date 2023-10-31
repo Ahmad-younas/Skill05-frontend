@@ -9,24 +9,24 @@ const SideBar = () => {
 
   const changeStyle = () => {
     if (
-      style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      style == "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion"
     ) {
       setStyle(
-        "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled"
+        "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled"
       );
     } else {
-      setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
+      setStyle("navbar-nav bg-gradient-danger sidebar sidebar-dark accordion");
     }
   };
   const changeStyle1 = () => {
     if (
-      style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      style == "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion"
     ) {
       setStyle(
-        "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1"
+        "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled1"
       );
     } else {
-      setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
+      setStyle("navbar-nav bg-gradient-danger sidebar sidebar-dark accordion");
     }
   };
   return (
@@ -58,10 +58,10 @@ const SideBar = () => {
 
       {/*  <!-- Nav Item - Dashboard --> */}
       <li className="nav-item active">
-        <a className="nav-link" href="index.html">
+        <Link className="nav-link" to="/dashboard">
           <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
-        </a>
+        </Link>
       </li>
 
       {/*  <!-- Divider --> */}

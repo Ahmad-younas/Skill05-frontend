@@ -9,24 +9,24 @@ const SideBar = () => {
 
   const changeStyle = () => {
     if (
-      style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      style == "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion"
     ) {
       setStyle(
-        "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled"
+        "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled"
       );
     } else {
-      setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
+      setStyle("navbar-nav bg-gradient-danger sidebar sidebar-dark accordion");
     }
   };
   const changeStyle1 = () => {
     if (
-      style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      style == "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion"
     ) {
       setStyle(
-        "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1"
+        "navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled1"
       );
     } else {
-      setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
+      setStyle("navbar-nav bg-gradient-danger sidebar sidebar-dark accordion");
     }
   };
   return (
