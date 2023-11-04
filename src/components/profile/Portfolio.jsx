@@ -64,7 +64,7 @@ const Portfolio = () => {
 
         console.log(...formDataToSend);
         const storedToken = localStorage.getItem("token");
-        if(storedToken){
+        if(true){
           console.log("qwerfde");
           await axios
           .post("/api/candidate/candidateapplyJob", formData, {
@@ -102,7 +102,6 @@ const Portfolio = () => {
             console.log("Error:", error);
           });
         }else{
-          toast.success("Successfully Created portfolio");
           navigation("/signin")
         }
       };

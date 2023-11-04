@@ -7,11 +7,14 @@ import img4 from "../../assets/img-4.svg";
 import axios from "axios";
 import Styles from "../signinPage/signinPage.module.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import Swal from 'sweetalert2'
 import { Link, useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
 import ReCAPTCHA from "react-google-recaptcha";
 const SigninPage = (props) => {
   const navigation = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,15 +34,23 @@ const SigninPage = (props) => {
   }
   const handleSubmit = async (e) => {
     if (loginType === 'candidate') {
+      setLoading(true);
       e.preventDefault();
       await axios
         .post("/api/candidate/candidateLogin", formData)
         .then(async (res) => {
           if (res.status === 200) {
+            setLoading(false);
             const { token } = res.data;
             localStorage.setItem("token", token);
-            toast.success("please verify email for verification of your Account");
             console.log("Form data sent successfully");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'please verify email for verification of your Account',
+              showConfirmButton: false,
+              timer: 1500
+            })
             setFormData({
               email: "",
               password: "",
@@ -47,13 +58,19 @@ const SigninPage = (props) => {
   
             setTimeout(() => {
               navigation("/");
-            }, 3000);
+            }, 1500);
           }
         })
         .catch((err) => {
           if (err.response.status === 401) {
             console.log("message", err.response.data.error);
-            toast.warn(err.response.data.error);
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: err.response.data.error,
+              showConfirmButton: false,
+              timer: 1500
+            })
             setFormData({
               name: "",
               email: "",
@@ -65,15 +82,23 @@ const SigninPage = (props) => {
           console.log("error", err);
         }); 
     } else if (loginType === 'recruiter') {
+      setLoading(true);
       e.preventDefault();
       await axios
         .post("/api/recruiter/recruiterLogin", formData)
         .then(async (res) => {
           if (res.status === 200) {
+            setLoading(false);
             const { token } = res.data;
             localStorage.setItem("token", token);
-            toast.success("Login Successfully");
             console.log("Form data sent successfully");
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Login Successfully',
+              showConfirmButton: false,
+              timer: 1500
+            })
             setFormData({
               email: "",
               password: "",
@@ -81,7 +106,7 @@ const SigninPage = (props) => {
   
             setTimeout(() => {
               navigation("/recuriterdasboard");
-            }, 3000);
+            }, 1500);
           }
         })
         .catch((err) => {
@@ -92,6 +117,18 @@ const SigninPage = (props) => {
   return (
     <React.Fragment>
       <Navbar />
+      <div>
+        {loading?(
+          <div>
+             <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+             >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
+          </div>
+        ):null}        
+      </div>
       <div>
         <Container style={{ paddingTop: "5rem" }}>
           <Row>
@@ -125,26 +162,6 @@ const SigninPage = (props) => {
                   justifyContent: "center",
                 }}
               >
-                {/* <hr
-                  style={{
-                    width: "100px",
-                    paddingBottom: "13px",
-                  }}
-                /> */}
-                {/* <p
-                  style={{
-                    paddingLeft: "10px",
-                    paddingRight: "10px",
-                  }}
-                >
-                  Or continue with
-                </p> */}
-                {/* <hr
-                  style={{
-                    width: "100px",
-                    paddingBottom: "13px",
-                  }}
-                /> */}
               </div>
               <div style={{ marginTop: "0.5rem" }}>
                 <Form onSubmit={handleSubmit}>
@@ -274,7 +291,6 @@ const SigninPage = (props) => {
           </Row>
           <Footer />
         </Container>
-        <ToastContainer />
       </div>
     </React.Fragment>
   );

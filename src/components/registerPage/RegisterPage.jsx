@@ -8,12 +8,15 @@ import Footer from "../footer/Footer";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import Swal from 'sweetalert2'
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
 
 
 const RegisterPage = (props) => {
   const navigation = useNavigate();
   const [verified, setVerified] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [loginType, setLoginType] = useState('candidate');
   const [formData, setFormData] = useState({
     name: "",
@@ -36,14 +39,22 @@ const RegisterPage = (props) => {
   };
   const handleSubmit = async (e) => {
     if (loginType === 'candidate') {
+      setLoading(true);
       e.preventDefault();
 
     await axios
       .post("/api/candidate/candidateSignUp", formData)
       .then((res) => {
         if (res.status === 201) {
-           toast.success("Account successfully created");
+          setLoading(false);
           console.log("Form data sent successfully");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Account successfully created',
+            showConfirmButton: false,
+            timer: 1500
+          })
           setFormData({
             name: "",
             email: "",
@@ -54,20 +65,28 @@ const RegisterPage = (props) => {
           setTimeout(() => {
             navigation("/signin");
             console.log("QWERTY");
-          }, 3000);
+          }, 1500);
         }
       })
       .catch((err) => {
         console.log("error", err.status);
       });
     } else if(loginType === 'recruiter'){
+      setLoading(true);
       e.preventDefault();
 
       await axios
         .post("/api/recruiter/recruiterSignUp", formData)
         .then((res) => {
           if (res.status === 201) {
-            toast.success("your request have been submit it will take 24 hour to procress once it approve you will get an email");
+            setLoading(false);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'your request have been submit it will take 24 hour to procress once it approve you will get an email',
+              showConfirmButton: false,
+              timer: 1500
+            })
             setFormData({
               name: "",
               email: "",
@@ -76,9 +95,8 @@ const RegisterPage = (props) => {
               repassword: "",
             });
             setTimeout(() => {
-              console.log("qwertyu");
               navigation("/");
-            }, 3000);
+            }, 1500);
           }
         })
         .catch((err) => {
@@ -89,6 +107,18 @@ const RegisterPage = (props) => {
   return (
     <React.Fragment>
       <Navbar />
+      <div>
+        {loading?(
+          <div>
+             <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+             >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
+          </div>
+        ):null}        
+      </div>
       <div>
         <Container style={{ paddingTop: "5rem" }}>
           <Row>
@@ -321,7 +351,6 @@ const RegisterPage = (props) => {
           </Row>
           <Footer />
         </Container>
-        <ToastContainer />
       </div>
     </React.Fragment>
   );

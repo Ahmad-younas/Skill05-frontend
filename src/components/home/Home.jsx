@@ -495,7 +495,7 @@ function Home() {
                         <Button
                           className={Styles.customApplyButton}
                           onClick={() => {
-                            navigate("/jobs");
+                            navigate(`/jobdetails/${dta.id}`);
                           }}
                         >
                           Apply Now

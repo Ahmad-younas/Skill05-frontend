@@ -5,7 +5,7 @@ import axios from "axios";
 import Footer from "../footer/Footer";
 import Lottie from "lottie-react";
 import forgetPassword from "../../assets/forget_password.json";
-import { ToastContainer, toast } from "react-toastify";
+import Swal from 'sweetalert2';
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -22,14 +22,28 @@ const ForgetPassword = () => {
       .post("/api/candidate/forgetpassword", { email })
       .then((response) => {
         if (response.status === 201) {
-          toast.success("Password reset email sent. Please check your email.");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Successfully Login',
+            showConfirmButton: false,
+            timer: 1500
+          })
           setEmail("");
         } else if (response.status == 404) {
           setMessage("User not reginster");
         }
       })
       .catch((error) => {
-        console.log("Error:", error);
+        if(error.response.status == 404 ){
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'User not found',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       });
   };
 
@@ -54,7 +68,7 @@ const ForgetPassword = () => {
               </Form.Group>
 
               <Button
-                variant="primary"
+                variant="danger"
                 style={{ marginTop: "10px" }}
                 type="submit"
               >
@@ -70,7 +84,6 @@ const ForgetPassword = () => {
         </Row>
         <Footer />
       </Container>
-      <ToastContainer />
     </React.Fragment>
   );
 };

@@ -33,7 +33,7 @@ const Job = () => {
   const [search, setSearch] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch data from the API when the component mount
@@ -104,7 +104,7 @@ const Job = () => {
         console.log("Error:", error);
       });
     }else{
-      navigation("/signin")
+      navigate("/signin")
     }
   };
   const style = {
@@ -326,7 +326,9 @@ const Job = () => {
                               </p>
                               <Button
                                 className={Styles.customApplyButton}
-                                onClick={handleShow}
+                               onClick={()=>{
+                                navigate(`/jobdetails/${dta.id}`)
+                               }}
                               >
                                 Apply Now
                               </Button>
