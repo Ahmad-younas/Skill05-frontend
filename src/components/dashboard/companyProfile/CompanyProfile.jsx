@@ -4,11 +4,14 @@ import { Row, Col, Button, Form, Container } from "react-bootstrap";
 import SideBar from "../sideBar/SideBar";
 import TopBar from "../topBar/TopBar";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import CircularProgress from '@mui/material/CircularProgress';
+import Swal from 'sweetalert2';
+import Backdrop from '@mui/material/Backdrop';
 const CompanyProfile = () => {
   const [style, setStyle] = useState(
     "navbar-nav  sidebar sidebar-dark accordion"
   );
+  const [loading, setLoading] = useState(false);
   const [companyInfo, setCompanyInfo] = useState({
     companyEmail: "",
     companyName: "",
@@ -29,13 +32,21 @@ const CompanyProfile = () => {
   };
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
 
     axios
       .post("/api/recruiter/recruiterprofile", companyInfo)
       .then((response) => {
         if (response.status === 201) {
-          toast.success("Job Post successfully");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'please verify email for verification of your Account',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setLoading(false);
           setCompanyInfo({
             companyEmail: "",
             companyName: "",
@@ -58,6 +69,18 @@ const CompanyProfile = () => {
       <body id="page-top">
         <div id="wrapper">
           <SideBar />
+          <div>
+        {loading?(
+          <div>
+             <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+             >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
+          </div>
+        ):null}        
+      </div>
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content">
               <TopBar />
@@ -73,15 +96,6 @@ const CompanyProfile = () => {
                   <div className="col-xl-8 col-md-6 ">
                     <div style={{ marginTop: "50px" }}>
                       <Form onSubmit={handleSubmit}>
-                        {/* <Form.Group controlId="companyLogo">
-                          <Form.Label>Company Logo:</Form.Label>
-                          <Form.Control
-                            type="file"
-                            name="companyLogo"
-                            onChange={handleLogoChange}
-                            accept=".png,.jpg,"
-                          />
-                        </Form.Group> */}
                         <Form.Group controlId="companyName">
                           <Form.Label>Company Name:</Form.Label>
                           <Form.Control
@@ -175,11 +189,11 @@ const CompanyProfile = () => {
                         </Form.Group>
 
                         <Button
-                          variant="primary"
+                          variant="danger"
                           type="submit"
                           style={{ marginTop: "20px" }}
                         >
-                          Submit Company Info
+                          Save Changes
                         </Button>
                       </Form>
                     </div>
@@ -249,7 +263,6 @@ const CompanyProfile = () => {
             </div>
           </div>
         </div>
-        <ToastContainer />
       </body>
     </React.Fragment>
   );

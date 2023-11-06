@@ -6,8 +6,12 @@ import { ToastContainer, toast } from "react-toastify";
 import SideBar from "../sideBar/SideBar";
 import TopBar from "../topBar/TopBar";
 import Styles from "./shortListCandidate.module.css";
+import Swal from 'sweetalert2';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 const ShortListCandidate = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
@@ -21,19 +25,27 @@ const ShortListCandidate = () => {
   }, []);
 
   const handleUpdate = async (id) => {
+    setLoading(true);
     const formdata = {
       uid: id,
     };
     await axios
       .put(
-        "http://localhost:3001/files/1695502617410-SKILLO5(1)_1.pdf",
+        "/api/candidate/shortList",
         formdata
       )
       .then(async (res) => {
         console.log(res.data);
         if (res.status === 200) {
+          setLoading(false);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Candidate Successfully ShortList',
+            showConfirmButton: false,
+            timer: 1500
+          })
           setData(res.data);
-          toast.success("Candidate ShortList");
         }
       })
       .catch((err) => {
@@ -44,6 +56,18 @@ const ShortListCandidate = () => {
     <body id="page-top">
       <div id="wrapper">
         <SideBar />
+        <div>
+        {loading?(
+          <div>
+             <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+             >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
+          </div>
+        ):null}        
+      </div>
         <div id="content-wrapper" className="d-flex flex-column">
           <div id="content">
             <TopBar />

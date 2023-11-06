@@ -34,7 +34,6 @@ function App() {
       <Route path="/recuriterdasboard" element={<RecuriterDashboard />} />
       <Route path="/profile" element={<CompanyProfile />} />
       <Route path="/setting" element={<ProfileSetting />} />
-      <Route path="/setting" element={<ProfileSetting />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
       <Route path="/resetpassword" element={<ResetPassword />} />

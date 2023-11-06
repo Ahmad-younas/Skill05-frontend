@@ -6,7 +6,12 @@ import TopBar from "../topBar/TopBar";
 import {Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 const AdminDashboard = () => {
+  const [formdata, setFormData] = useState({
+    category:"",
+    country:""
+  });
   const [style, setStyle] = useState(
     "navbar-nav  sidebar sidebar-dark accordion"
   );
@@ -17,8 +22,28 @@ const AdminDashboard = () => {
     navigation("/admin");
   };
 
-  const handleSubmit = ()=>{
-    toast.success("Successfully Save");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formdata,
+      [name]: value,
+    });
+  };
+  const handleCountrySubmit = async (e) => {
+    e.preventDefault();
+   await axios.post('/api/admin/addcountry',formdata).then((data)=>{
+    console.log("data", data);
+   }).catch((error)=>{
+    console.log("error",error);
+   });
+  }
+  const handleCategorySubmit = async (e)=>{
+    e.preventDefault();
+   await axios.post('/api/admin/addcategory',formdata).then((data)=>{
+    console.log("data", data);
+   }).catch((error)=>{
+    console.log("error",error);
+   })
   }
   const changeStyle = () => {
     if (
@@ -56,24 +81,31 @@ const AdminDashboard = () => {
                   <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
                 </div>
                 <div className="d-sm-flex  mb-4m" style={{flexDirection:'column'}}>
-                  <Form onSubmit={handleSubmit}>
+                  <Form onSubmit={handleCategorySubmit}>
                   <Form.Group controlId="email">
                   <Form.Label>Add Category:</Form.Label>
                   <Form.Control
                     type="text"
                     name="category"
                     required
+                    placeholder="e.g Management"
+                    onChange={handleChange}
                   />
                 </Form.Group>
+                <Button className='mt-2 btn btn-danger' type='submit'>ADD</Button>
+                </Form>
+                <Form onSubmit={handleCountrySubmit}>
                 <Form.Group controlId="email">
                   <Form.Label>Add Country:</Form.Label>
                   <Form.Control
                     type="text"
                     name="country"
                     required
+                    placeholder="e.g India"
+                    onChange={handleChange}
                   />
                 </Form.Group>
-                <Button className='mt-2 btn btn-danger' type='submit'>Save Changes</Button>
+                <Button className='mt-2 btn btn-danger' type='submit'>ADD</Button>
                 </Form>
                 </div>
               </div>

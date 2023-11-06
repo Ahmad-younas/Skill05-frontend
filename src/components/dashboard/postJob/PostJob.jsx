@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
+import Swal from 'sweetalert2'
 function PostJob() {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     companyLogo: null,
     jobTitle: "",
@@ -36,6 +39,7 @@ function PostJob() {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const formDataToSend = new FormData();
     formDataToSend.append("companyLogo", formData.companyLogo);
@@ -56,7 +60,14 @@ function PostJob() {
       })
       .then(async (res) => {
         if (res.status === 201) {
-          toast.success("Job Post successfully");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'please verify email for verification of your Account',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setLoading(false);
           console.log("Form data sent successfully");
           setFormData({
             jobTitle: "",
@@ -204,7 +215,7 @@ function PostJob() {
                           </Form.Group>
 
                           <Button
-                            variant="primary"
+                            variant="danger"
                             type="submit"
                             style={{ marginTop: "30px" }}
                           >
@@ -279,7 +290,6 @@ function PostJob() {
             </div>
           </div>
         </div>
-        <ToastContainer />
       </body>
     </React.Fragment>
   );

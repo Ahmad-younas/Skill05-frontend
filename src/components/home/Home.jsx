@@ -498,7 +498,7 @@ function Home() {
                             navigate(`/jobdetails/${dta.id}`);
                           }}
                         >
-                          Apply Now
+                          See Details
                         </Button>
                       </div>
                     </Col>

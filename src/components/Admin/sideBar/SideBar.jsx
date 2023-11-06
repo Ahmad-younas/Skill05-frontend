@@ -67,9 +67,6 @@ const SideBar = () => {
       {/*  <!-- Divider --> */}
       <hr className="sidebar-divider" />
 
-      {/*   <!-- Heading --> */}
-      <div className="sidebar-heading">Interface</div>
-
       {/*  <!-- Nav Item - Pages Collapse Menu --> */}
       <li className="nav-item">
         <Link
@@ -79,7 +76,7 @@ const SideBar = () => {
           aria-controls="collapseTwo"
         >
           <i className="fas fa-fw fa-user"></i>
-          <span>Applicants List</span>
+          <span style={{fontSize:'15px',fontWeight:'bold'}}>Applicants List</span>
         </Link>
       </li>
 

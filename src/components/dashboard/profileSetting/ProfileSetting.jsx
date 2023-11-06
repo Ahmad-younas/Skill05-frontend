@@ -4,8 +4,11 @@ import TopBar from "../topBar/TopBar";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
+import Swal from 'sweetalert2'
 export const ProfileSetting = () => {
+  const [loading, setLoading] = useState(false);
   const [companyInfo, setCompanyInfo] = useState({
     CompanyEmail: "",
     CompanyName: "",
@@ -46,6 +49,7 @@ export const ProfileSetting = () => {
       });
   }, []);
   const handleSubmitCompanyInfo = (e) => {
+    setLoading(true);
     const storedToken = localStorage.getItem("token");
     e.preventDefault();
     axios
@@ -56,7 +60,14 @@ export const ProfileSetting = () => {
       })
       .then((response) => {
         if (response.status === 201) {
-          toast.success("successfully Update Info");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'please verify email for verification of your Account',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setLoading(false);
           setCompanyInfo({
             companyEmail: "",
             companyName: "",
@@ -78,6 +89,18 @@ export const ProfileSetting = () => {
       <body id="page-top">
         <div id="wrapper">
           <SideBar />
+          <div>
+        {loading?(
+          <div>
+             <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+             >
+                <CircularProgress color="inherit"/>
+            </Backdrop>
+          </div>
+        ):null}        
+      </div>
           <div id="content-wrapper" className="d-flex flex-column">
             <div id="content">
               <TopBar />
@@ -184,11 +207,11 @@ export const ProfileSetting = () => {
                         </Form.Group>
 
                         <Button
-                          variant="primary"
+                          variant="danger"
                           type="submit"
                           style={{ marginTop: "20px" }}
                         >
-                          Update Info
+                          Save Changes
                         </Button>
                       </Form>
                     </div>
@@ -258,7 +281,6 @@ export const ProfileSetting = () => {
             </div>
           </div>
         </div>
-        <ToastContainer />
       </body>
     </React.Fragment>
   );

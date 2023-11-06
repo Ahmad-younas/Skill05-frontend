@@ -85,23 +85,6 @@ const TopBar = () => {
             </div>
           </li>
 
-          {/*  <!-- Nav Item - Messages --> */}
-          <li className="nav-item dropdown no-arrow mx-1">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              id="messagesDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i className="fas fa-envelope fa-fw"></i>
-              {/*  <!-- Counter - Messages --> */}
-              <span className="badge badge-danger badge-counter">7</span>
-            </a>
-          </li>
-
           <div className="topbar-divider d-none d-sm-block"></div>
 
           {/* <!-- Nav Item - User Information --> */}
@@ -115,9 +98,6 @@ const TopBar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-                Douglas McGee
-              </span>
               <img
                 className="img-profile rounded-circle"
                 src="img/undraw_profile.svg"

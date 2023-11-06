@@ -56,17 +56,15 @@ const SideBar = () => {
       <li className="nav-item active">
         <Link className="nav-link" to="/recuriterdasboard">
           <i className="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+          <span style={{fontWeight:'bold', fontSize:'15px'}}>Dashboard</span>
         </Link>
       </li>
-      <hr className="sidebar-divider" />
-      <div className="sidebar-heading">Interface</div>
 
       {/*  <!-- Nav Item - Pages Collapse Menu --> */}
       <li className="nav-item">
         <Link className="nav-link collapsed" to="/profile">
           <i className="fas fa-fw fa-user"></i>
-          <span>profile</span>
+          <span style={{fontWeight:'bold', fontSize:'15px'}}>profile</span>
         </Link>
       </li>
 
@@ -78,7 +76,7 @@ const SideBar = () => {
           to={"/setting"}
         >
           <i className="fas fa-fw fa-wrench"></i>
-          <span>Setting</span>
+          <span style={{fontWeight:'bold', fontSize:'15px'}}>Setting</span>
         </Link>
       </li>
       <li className="nav-item">
@@ -89,7 +87,7 @@ const SideBar = () => {
         >
           <i className="fas fa-fw fa-user"></i>
 
-          <span>All Candidate</span>
+          <span style={{fontWeight:'bold', fontSize:'15px'}}>All Candidate</span>
         </Link>
       </li>
       <li className="nav-item">
@@ -99,7 +97,7 @@ const SideBar = () => {
           to={"/shortlistedCandidate"}
         >
           <i className="fas fa-fw fa-graduation-cap"></i>
-          <span>Short Listed</span>
+          <span style={{fontWeight:'bold', fontSize:'15px'}}>Short Listed</span>
         </Link>
       </li>
       <hr className="sidebar-divider d-none d-md-block" />

@@ -6,8 +6,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Styles from "./FinalCall.module.css";
+import CircularProgress from '@mui/material/CircularProgress';
+import Swal from 'sweetalert2';
 const FinalCall = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
@@ -21,17 +24,24 @@ const FinalCall = () => {
       });
   }, []);
   const handleSendCall = async (Email, id) => {
+    setLoading(true);
     const formdata = {
       email: Email,
       id: id,
     };
     await axios
-      .post("http://localhost:3001/api/candidate/sendInvitation", formdata)
+      .post("/api/candidate/sendInvitation", formdata)
       .then((res) => {
         if (res.status === 200) {
-          console.log("ResponseData", res.data);
+          setLoading(false);
           setData(res.data);
-          toast.success("Invitation Send");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Invitation Sent to Candidate',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       })
       .catch((err) => {
