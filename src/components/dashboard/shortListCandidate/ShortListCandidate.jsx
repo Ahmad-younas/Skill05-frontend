@@ -112,7 +112,7 @@ const ShortListCandidate = () => {
                         </td>
                         <td>
                           <a
-                            href="http://localhost:3001/files/1695502617410-SKILLO5(1)_1.pdf"
+                            href="/files/1695502617410-SKILLO5(1)_1.pdf"
                             target="_blank"
                           >
                             <button className={Styles.Rejectbutton}>
