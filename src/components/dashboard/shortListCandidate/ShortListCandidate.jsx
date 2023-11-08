@@ -12,10 +12,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 const ShortListCandidate = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const storedToken = localStorage.getItem("token");
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
-      .get("/api/candidate/getallcandidate")
+      .get("/api/candidate/getallcandidate",{
+        headers: {
+          Authorization: `Bearer ${storedToken}`
+        }
+      })
       .then((res) => {
         setData(res.data);
       })
@@ -25,15 +30,17 @@ const ShortListCandidate = () => {
   }, []);
 
   const handleUpdate = async (id) => {
+   
     setLoading(true);
     const formdata = {
       uid: id,
     };
     await axios
-      .put(
-        "/api/candidate/shortList",
-        formdata
-      )
+    .put("/api/candidate/shortList",formdata,{
+      headers: {
+        Authorization: `Bearer ${storedToken}`
+      }
+    })
       .then(async (res) => {
         console.log(res.data);
         if (res.status === 200) {

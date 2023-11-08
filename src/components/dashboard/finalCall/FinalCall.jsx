@@ -9,12 +9,17 @@ import Styles from "./FinalCall.module.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import Swal from 'sweetalert2';
 const FinalCall = () => {
+  const storedToken = localStorage.getItem("token");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Fetch data from the API when the component mounts
     axios
-      .get("/api/candidate/getshortlistedcandidate")
+      .get("/api/candidate/getshortlistedcandidate",{
+        headers: {
+          Authorization: `Bearer ${storedToken}` 
+        }
+      })
       .then((res) => {
         console.log("response", res);
         setData(res.data);
@@ -24,13 +29,18 @@ const FinalCall = () => {
       });
   }, []);
   const handleSendCall = async (Email, id) => {
+   
     setLoading(true);
     const formdata = {
       email: Email,
       id: id,
     };
     await axios
-      .post("/api/candidate/sendInvitation", formdata)
+      .post("/api/candidate/sendInvitation", formdata,{
+        headers:{
+          Authorization: `Bearer ${storedToken}`,
+       }
+      })
       .then((res) => {
         if (res.status === 200) {
           setLoading(false);

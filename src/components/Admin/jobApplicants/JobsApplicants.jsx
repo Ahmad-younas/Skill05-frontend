@@ -10,9 +10,7 @@ import { useNavigate } from "react-router-dom";
 const JobsApplicants = () => {
   const [data, setData] = useState([]);
   const navigation = useNavigate();
-  const tokenWithBearer = localStorage.getItem("token");
-  const tokenParts = tokenWithBearer.split(' ');
-  const token = tokenParts[0];
+  const token =  localStorage.getItem("token");
 
   console.log(token);
   const handleLogout = () => {
